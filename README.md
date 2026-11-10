@@ -13,7 +13,7 @@ measured boot with a simulated TPM. It is built to be *learned from*: every conc
 ## Quickstart
 
 ```bash
-git clone https://github.com/<you>/heimdall-boot && cd heimdall-boot
+git clone https://github.com/AmirAMJ/heimdall && cd heimdall
 python -m venv .venv && . .venv/bin/activate
 pip install -e ".[dev]"
 bash scripts/demo.sh        # the whole story in ~30 lines of output
