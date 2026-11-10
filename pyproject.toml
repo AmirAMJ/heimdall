@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heimdall-boot"
+dynamic = ["version"]
+description = "A Python reference implementation of the secure-boot chain of trust: signed images, PK/KEK/db/dbx, anti-rollback and measured boot."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["cryptography>=42"]
+keywords = ["secure-boot", "uefi", "chain-of-trust", "measured-boot", "security", "education"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Security :: Cryptography",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "hypothesis>=6", "pip-audit", "build"]
+
+[project.scripts]
+heimdall = "heimdall.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "heimdall.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["attacks: every test passing means a boot attack was refused"]
